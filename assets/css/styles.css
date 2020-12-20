@@ -1,0 +1,764 @@
+/*
+=============== 
+Fonts
+===============
+*/
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700&display=swap");
+
+/*
+=============== 
+Variables
+===============
+*/
+
+:root {
+  /* dark shades of primary color*/
+  --clr-primary-1: hsl(184, 91%, 17%);
+  --clr-primary-2: hsl(185, 84%, 25%);
+  --clr-primary-3: hsl(185, 81%, 29%);
+  --clr-primary-4: hsl(184, 77%, 34%);
+  /* primary/main color */
+  --clr-primary-5: hsl(185, 62%, 45%);
+  /* lighter shades of primary color */
+  --clr-primary-6: hsl(185, 57%, 50%);
+  --clr-primary-7: hsl(184, 65%, 59%);
+  --clr-primary-8: hsl(184, 80%, 74%);
+  --clr-primary-9: hsl(185, 94%, 87%);
+  --clr-primary-10: hsl(186, 100%, 94%);
+  /* darkest grey - used for headings */
+  --clr-grey-1: hsl(209, 61%, 16%);
+  --clr-grey-2: hsl(211, 39%, 23%);
+  --clr-grey-3: hsl(209, 34%, 30%);
+  --clr-grey-4: hsl(209, 28%, 39%);
+  /* grey used for paragraphs */
+  --clr-grey-5: hsl(210, 22%, 49%);
+  --clr-grey-6: hsl(209, 23%, 60%);
+  --clr-grey-7: hsl(211, 27%, 70%);
+  --clr-grey-8: hsl(210, 31%, 80%);
+  --clr-grey-9: hsl(212, 33%, 89%);
+  --clr-grey-10: hsl(210, 36%, 96%);
+  --clr-white: #fff;
+  --ff-primary: "Lato", sans-serif;
+  --transition: all 0.3s linear;
+  --spacing: 0.25rem;
+  --radius: 0.5rem;
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+/*
+=============== 
+Global Styles
+===============
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: var(--ff-primary);
+  background: var(--clr-white);
+  color: var(--clr-grey-1);
+  line-height: 1.5;
+  font-size: 0.875rem;
+}
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+
+img:not(.nav-logo) {
+  /*o sea afecta a todas las imagenes menos a la de la clase nav-logo*/
+  width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: var(--spacing);
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+h1 {
+  font-size: 3rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.25rem;
+}
+h4 {
+  font-size: 0.875rem;
+}
+p {
+  margin-bottom: 1.25rem;
+  color: var(--clr-grey-5);
+}
+@media screen and (min-width: 800px) {
+  h1 {
+    font-size: 4rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 1.75rem;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+  body {
+    font-size: 1rem;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1;
+  }
+}
+/*  global classes */
+
+.btn {
+  text-transform: uppercase;
+  background: var(--clr-primary-5);
+  color: var(--clr-white);
+  padding: 0.375rem 0.75rem;
+  letter-spacing: var(--spacing);
+  display: inline-block;
+  /* font-weight: 700; */
+  transition: var(--transition);
+  font-size: 0.875rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.btn:hover {
+  color: var(--clr-primary-1);
+  background: var(--clr-primary-8);
+}
+.section {
+  padding: 5rem 0;
+}
+.section-title {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.section-title h2 {
+  text-transform: uppercase;
+}
+.section-title span {
+  color: var(--clr-primary-5);
+}
+.section-center {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 1170px;
+}
+
+.green h4 {
+  color: green;
+}
+.green h3 {
+  color: green;
+}
+.red h4 {
+  color: red;
+}
+.red h3 {
+  color: red;
+}
+
+@media screen and (min-width: 992px) {
+  .section-center {
+    width: 95vw;
+  }
+}
+
+/*
+================================================================================================================================== 
+Hero
+===========================================================================================================================================
+*/
+
+.hero {
+  /*esto afecta desde CONTINUE EXPLORING */
+  min-height: 100vh; /* ocupa el 100% de la pantalla independientemente de la pantalla*/
+  background: linear-gradient(rgba(22, 174, 186, 0.7), rgba(0, 0, 0, 0.7)),
+    url(../images/main.jpeg) center/cover no-repeat; /*el gradiente esta muy bueno*/
+  display: flex;
+
+  align-items: center; /*con este hacemos que los children queden verticalmente en el medio  del container*/
+  justify-content: center; /*con este que los children queden centrados, notar que esta propiedad los centra si tiene espacio libre para acomodarlos en el medio, para cuando no tiene espacio libre sigue pegado a la izquierda
+o sea para pantallas chicas no me esta sirviendo, para cuando la pantalla es grande ya queda bien, asi que para arreglarlo, centro directamente el texto*/
+}
+.hero-banner {
+  text-align: center; /*ahora si se arreglo independientemente del tamanio de pantalla*/
+  color: var(--clr-white);
+  padding: 0 3rem;
+}
+.hero-banner h1 {
+  text-transform: uppercase;
+}
+.hero-banner p {
+  max-width: 35rem; /* para que el texto no ocupe todo el largo de pantalla*/
+  margin-left: auto; /*cuando hago lo de arriba como siempre me queda pegado a la izquierda y lo arreglo de esta manera*/
+  margin-right: auto; /*sin tocar los padding de arriba y abajo que ya les puse antes*/
+  color: var(--clr-white);
+  letter-spacing: var(--spacing);
+}
+.hero-btn {
+  padding: 0.9rem 1.6rem;
+  font-size: 1.25rem;
+  background: var(--clr-white);
+  color: var(--clr-primary-5);
+}
+.hero-btn:hover {
+  background: transparent;
+  color: var(--clr-white);
+  border-color: var(--clr-white);
+}
+/* por ahora vemos que tenemos el fondo de color celeste, estaria bueno poner una imagen, pero cuando estamos trabajando con celulares, a veces no esta bueno forzar imagenes tan grandes
+asi que para pantalla chiquita va el color y para las grandes si va foto */
+/*EN MI CASO LE PUSE A LA PANTALLA CHICA EL FONDO TAMBIEN POR QUE ES MUY LINDO, PERO SUPONIENDO QUE NO TENGA*/
+@media screen and (min-width: 768px) {
+  .hero {
+    background: linear-gradient(rgba(22, 174, 186, 0.7), rgba(0, 0, 0, 0.7)),
+      url(../images/main.jpeg) center/cover no-repeat; /*el gradiente esta muy bueno*/
+  }
+  .hero-banner {
+    padding: 0;
+    max-width: 45rem;
+  }
+}
+
+/*
+
+================================================================================================================================ 
+About
+==============================================================================================
+*/
+
+/* section add to globals */
+/* title add to globals */
+/* section center add to globals */
+
+.about-img,
+.about-info {
+  margin-bottom: 2rem;
+}
+
+/* ahora voy a usar flexbos para cuando la pantalla se pone mas grande, que la imagen y la info me queden como 2 columnas y no una abajo de la otra */
+@media screen and (min-width: 992px) {
+  .about-center {
+    display: flex;
+    justify-content: space-between; /*ahora si con este ponemos espacio entre los dos children*/
+    flex-wrap: wrap;
+  }
+  .about-img,
+  .about-info {
+    margin-bottom: 0;
+
+    flex: 0 0 calc(50% - 2rem); /*de esta manera los children no crecen ni se achican y tienen una base de 50% o sea cada uno ocupa una mitad de la pantalla, menos el margen que queda a la derecha
+    luego ese margen lo modificamos para que quede en el medio*/
+    align-self: center; /*de esta manera se alinean entre los children o sea los centro de ambos cuando esten uno alado del otro, se alinean*/
+  }
+}
+/*
+
+======================================================================================================================================================================== 
+Services
+==================================================================================================================================================================================
+*/
+.services {
+  background: var(--clr-grey-10);
+}
+.service {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.service-icon {
+  background: var(--clr-primary-5);
+  color: var(--clr-primary-1);
+  padding: 0.5rem;
+  display: inline-block; /*asi puedo poner elementos alado luego*/
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.service-text {
+  /* esto ya lo tenemos calado */
+  max-width: 20rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media screen and (min-width: 576px) {
+  /* otra vez flexbox vamos a hacer que queden 2 columnas*/
+  .services-center {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .service {
+    flex: 0 0 calc(50% - 1rem);
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  /* ahora que queden 3 columnas*/
+
+  .service {
+    flex: 0 0 calc(33.333% - 1rem);
+  }
+}
+
+@media screen and (min-width: 1170px) {
+  /* ahora vamos a hacer que quden 3 columnas con 2 columnas internas cada una
+  el icono y el titulo y el service por el otro lado */
+
+  .service {
+    display: flex;
+    text-align: left;
+    /* ya me queda uno a la izquierda del otro pero el icono me queda estirado asi que arreglo eso */
+  }
+  .service-icon {
+    align-self: start; /*ahora ya no queda estirado el icono, habria que daarle padding*/
+  }
+  .service-info {
+    padding-left: 1rem;
+  }
+  .service-title {
+    margin-bottom: 0.5rem;
+  }
+}
+/*
+=============================================================================================================================== 
+Featured Tours
+======================================================================================================================================
+*/
+/* primero toco las cartas en general para agregarle los efectos */
+/* y las cosas en general que va a tener cada uno */
+.tour-card {
+  transition: var(--transition);
+  background: var(--clr-grey-10);
+  box-shadow: var(--light-shadow);
+  margin-bottom: 2rem;
+}
+.tour-card:hover {
+  box-shadow: var(--dark-shadow);
+  transform: scale(1.02);
+}
+/* con esto termine el toque en generald e las cartas  */
+/* voy a darle posicion relativa a mi container, asi con posicion absoluta pongo la fecha abajo a la derecha de la imagen */
+.tour-img-container {
+  position: relative;
+}
+.tour-img {
+  height: 15rem; /*cone sto se me deforman un poco las imagenes, asi que uso object-fit:cover asi lo arreglo*/
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.tour-date {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background: var(--clr-primary-8);
+  margin-bottom: 0; /*con este me lo coloca abajo a la derecha de la imagen*/
+  color: var(--clr-primary-1);
+  text-transform: capitalize;
+  padding: 0.25rem 0.5rem;
+}
+.tour-info {
+  padding: 1.25rem 1.5rem;
+}
+.tour-footer {
+  /*voy a hacer que las 3 palabras me queden una en cada extremo y una en el medio usando flexbox*/
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.tour-footer p {
+  line-height: 0;
+  margin-bottom: 0;
+  text-transform: capitalize;
+  color: var(--clr-primary-5);
+}
+.tour-btn {
+  text-align: center;
+}
+/* ahora usemos flexbos para armar el layout de las columnas cuando se vuelve msa grande la pantalla */
+@media screen and (min-width: 768px) {
+  .featured-center {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .tour-card {
+    flex: 0 0 calc(50% - 2rem); /*2 columnas*/
+  }
+}
+/* ahora cuando sea mas grande quiero un layout de 3 columnas */
+@media screen and (min-width: 1170px) {
+  .tour-card {
+    flex: 0 0 calc(33.333% - 2rem); /*2 columnas*/
+  }
+}
+/* estilizo la card 4 */
+.tour-title {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.tour-title p,
+.tour-title h4 {
+  margin-bottom: 0.75rem;
+  line-height: 1.25;
+}
+.tour-title p {
+  color: var(--clr-grey-7);
+}
+
+/*
+================================================================================================================================================ 
+Contact
+===================================================================================================================================
+*/
+.contact {
+  background: var(--clr-primary-5);
+}
+.contact-title {
+  color: var(--clr-white);
+}
+.contact-title p {
+  color: var(--clr-primary-8);
+}
+/* ahora toquemos un poco el form */
+.contact-form {
+  background: var(--clr-grey-10);
+  margin: 0 auto;
+  max-width: 30rem;
+  border-color: var(--clr-grey-5);
+  text-align: center;
+}
+.form-control {
+  color: var(--clr-grey-5);
+  margin-top: 20px;
+}
+.form-control,
+.btn-submit {
+  /*el padding, la letra y algunas cosas mas van a compartir ambos*/
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 300;
+  letter-spacing: var(--spacing);
+  background: var(--clr-white);
+  text-transform: capitalize;
+  border: transparent;
+}
+/* recordar que hay que hacerlo por que  aveces no lo toma automatico la pagina asi que lo forzamos denuevo */
+.form-control::-webkit-input-placeholder {
+  color: inherit;
+}
+.form-control::-moz-placeholder {
+  color: inherit;
+}
+.form-control:-ms-input-placeholder {
+  color: inherit;
+}
+.form-control::-ms-input-placeholder {
+  color: inherit;
+}
+.form-control::placeholder {
+  color: inherit;
+}
+.btn-submit {
+  margin-top: 20px;
+  font-family: var(--ff-primary);
+  margin-left: o.5rem;
+  background: var(--clr-primary-8);
+  color: var(--clr-primary-1);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.btn-submit:hover {
+  background: var(--clr-primary-1);
+  color: var(--clr-primary-5);
+}
+/* ahora armemos los layout cuando crece la pantalla con flexbox */
+@media screen and (min-width: 992px) {
+  .contact-center {
+    display: flex; /*otra vez se nos estira el form, ahora lo arreglamos*/
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .contact-form {
+    align-self: flex-start; /*arreglado*/
+    flex: 1 1 auto; /*hago que crezca el foro y se achique lo necesario */
+    max-width: 100%; /*le cambio el max-width sino no le va a dejar crecer mucho y va a quedar chico */
+    padding-left: 2rem; /*separo el foro un pocode la frase*/
+  }
+}
+/*
+============================================================================================================================= 
+Gallery
+=======================================================================================================================================
+*/
+/* a mi container le voya poner position relative para luego con absolute acomodar el icono */
+.gallery-img-container {
+  position: relative;
+  background: var(--clr-primary-5);
+}
+/* ahora coloco el icono en el centro como siempre, si no me acuerdo, esta explciado en el primer ptoyrcto */
+.gallery-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 2rem;
+  transform: translate(
+    -50%,
+    -50%
+  ); /*no me queda centrado sino que la punta izquierda del icono me queda en el centro asi que lo corro la mitad para izquierda y mitad para arriba*/
+  color: var(--clr-white);
+  opacity: 0; /*asi escondo el icono, la idea es que aparezca nada mas cuando hacemos hovering*/
+  cursor: pointer;
+  transition: var(--transition);
+}
+/* en este caso las imagenes estan todas cortadas igual, 
+pero hagamos como si no estuvieran, que es lo que pasa generalmente */
+.gallery-img {
+  height: 17rem; /*como siempre se distorsiona la imagen cuando la tocamos asi. asi que ahora la arreglamos*/
+  -o-object-fit: cover;
+  object-fit: cover; /*arreglado*/
+  transition: var(
+    --transition
+  ); /*la imagen tambien va a tener transicion por que quiero que se vuelva medio transparente asi se nota el fondocuando paso por encima*/
+}
+.gallery-img-container:hover .gallery-img {
+  /* lo que tiene que pasar con gallery-img cuando hago hovering por gallery-img-container */
+  opacity: 0.5;
+}
+.gallery-img-container:hover .gallery-icon {
+  opacity: 1;
+}
+/* ahora hagamos el colum layout, en este caso noe stoy usando la clase section-center por que quiero que toque los bordes esta vez*/
+/* armemos un 2 column layout */
+@media screen and (min-width: 768px) {
+  .gallery-center {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .gallery-img-container {
+    flex: 0 0 50%;
+  }
+}
+/* ahora un layout de 4 columnas */
+@media screen and (min-width: 992px) {
+  .gallery-img-container {
+    flex: 0 0 25%;
+  }
+}
+/*
+======================================================================================================================================= 
+Footer
+===========================================================================================================================================
+*/
+.footer {
+  background: var(--clr-grey-1);
+  text-align: center;
+  padding-left: 2rem; /*para no perder el padding que nos viene con el global style*/
+  padding-right: 2rem;
+}
+.footer-links,
+.footer-icons {
+  display: flex; /*pongo los bloques juntos, sacar y poner esta propiedad y ver las cosas interesantes que pasan con las ubicaciones*/
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  color: var(--clr-white);
+  text-transform: capitalize;
+  font-size: 1rem;
+  margin-right: 1rem;
+  letter-spacing: var(--spacing);
+  transition: var(--transition);
+}
+.footer-link:hover {
+  color: var(--clr-primary-5);
+}
+.footer-icon {
+  font-size: 2rem;
+  margin-right: 1rem;
+  color: var(--clr-primary-8);
+  transition: var(--transition);
+}
+.footer-icon:hover {
+  color: var(--clr-primary-5);
+}
+.copyright {
+  text-transform: capitalize;
+  letter-spacing: var(--spacing);
+  color: var(--clr-white);
+}
+/*
+============================================================================================================================= 
+NAVBAR
+=======================================================================================================================================
+*/
+/* comenzemos con la pantalla chica */
+/* en la pantalla chica el navbar tiene a la izquierda el titulo backrouds que es una imagen
+y a la derecha tiene el boton donde al apretar aparecen las secciones de la pagina */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--clr-white);
+  box-shadow: var(--dark-shadow);
+  z-index: 2; /*para que no la tapen las otras secciones de la apgina cuando estoy haciendo scroll*/
+}
+/* ahora voy a esconder los iconos, ya que solo quiero que aparezcan cuando la pantalla es grande */
+.nav-icons {
+  display: none;
+}
+/* ahora doy algunas propiedades pero las vamos a usar en la pantalla grande nomas */
+.nav-center {
+  width: 100%;
+  max-width: 1170px; /* asi se estira como maximo 1770 y queda bien cuando la pnatalla sea grande*/
+  margin: 0 auto;
+}
+.nav-header {
+  display: flex; /*para que esten uno alado del otro el boton y el titulo y no uno abajo del otro, las secciones quedan una abajo de otra como siempre, que va a ser el menu que aparezca cuando se aprete el boton*/
+  justify-content: space-between; /* para que esten separados lo maximo posible, cada uno llegue a el extremo del container*/
+  align-items: center;
+  padding: 1rem 2rem;
+}
+.nav-toggle {
+  background: transparent;
+  border: transparent;
+  font-size: 1.5rem;
+  color: var(--clr-primary-5);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.nav-toggle:hover {
+  transform: scale(1.2);
+}
+.nav-link {
+  display: block;
+  padding: 1rem 2rem;
+  text-transform: capitalize;
+  letter-spacing: var(--spacing);
+  transition: var(--transition);
+  color: var(--clr-grey-1);
+  cursor: pointer;
+  font-size: 1rem;
+}
+.nav-link:hover {
+  color: var(--clr-primary-1);
+  background: var(--clr-primary-8);
+  padding-left: 2.5rem; /*se corre a la izquierda cuando hago hovering*/
+}
+/* ahora lo que quiero es esconder mi barra para despues con js hacer que cuando aprete el boton baje la navbar con las secciones */
+/* me voy a dijar primero el alto de cada uno de mis links */
+/* veo en mi index que los links son items de la lista de clase nav-links asi que con esa info voy a poder ver la altura */
+/* voy a vision de desarrollador en google y busca esa parte de mi codigo con esa clase */
+/* ahora me mantengo con el mouse arriba(a veces hay que hacer click y a la derecha nos dice el alto y el ancho) */
+/* en nuestro caso es 280px */
+
+/* ahora escondamos arriba el navbar */
+.nav-links {
+  height: 0;
+  overflow: hidden;
+  transition: var(--transition);
+}
+.show-links {
+  /*esto lo que va a pasar cuando aprete el boton*/
+  height: 280px;
+}
+/* ahora armemoslo el navbar para cuando la pantalla es mas grande */
+/* ahora a la izquierda sigue el nombre backroads, en el medio estan las secciones y a la derecha estan los iconos de ig fb y twitter, no hay boton */
+
+@media screen and (min-width: 992px) {
+  .navbar {
+    padding: 1rem 2rem;
+  }
+  /* esconder el boton toggle */
+  .nav-toggle {
+    display: none;
+  }
+  .nav-center {
+    display: flex; /*para que el titulo y los links esten alado, ahora los links me siguen quedando alado de el titulo epro uno abajo del otro, ahora lo arreglo*/
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /*opcional*/
+  }
+  .nav-links {
+    height: auto; /*ya que no quiero ni el height 0 ni el 280px*/
+    display: flex; /*hago que cada elemento ahora este uno alado del otro, por loque ya no tengo una barra, sino que abajo del titulo, tengo todas las secciones una alado de la otra*/
+  }
+  .nav-header {
+    padding: 0 0;
+  }
+  .nav-link {
+    padding: 0 0;
+  }
+  .nav-link:hover {
+    padding: 0;
+    color: var(--clr-primary-5);
+    background: transparent;
+  }
+  /* por ahora tengo todas las secciones pegadas entre si a la derecha */
+  .nav-icons {
+    display: flex; /*ahora aparecieron los links uno alado del otro,pegados entre si, como tengo en el conatiner flex, automaticamente las secciones se mueven al centro y siguen pegadas entre si */
+  }
+  /* ahora arreglo que los links estan pegados entre si y los iconos estan pegados entre si dandoles margen */
+  .nav-link {
+    margin-right: 0.7rem;
+  }
+  .nav-icon {
+    margin-right: 0.7rem;
+    color: var(--clr-primary-5);
+    font-size: 1.2rem;
+    transition: var(--transition);
+  }
+  .nav-icon:hover {
+    color: var(--clr-primary-8);
+  }
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////////// */
+
+.btn-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+.btn-main {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.btn-solo {
+  margin-top: 20px;
+}
+.centering-solo {
+  text-align: center;
+}
+body {
+  text-align: center;
+}
+
+.btn-solo .btn {
+  background: red;
+}
